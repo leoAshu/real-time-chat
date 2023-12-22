@@ -1,4 +1,4 @@
-import { Chat, Store, UserId } from './store/Store'
+import { Chat, Store, UserId } from './Store'
 
 let globalChatId = 0
 
@@ -31,7 +31,7 @@ export class InMemoryStore implements Store {
             .slice(-1 * limit)
     }
 
-    addChat(roomId: string, userId: UserId, name: string, message: string, upvotes: UserId[]) {
+    addChat(roomId: string, userId: UserId, name: string, message: string) {
         const room = this.store.get(roomId)
         if (!room) {
             return
@@ -41,7 +41,7 @@ export class InMemoryStore implements Store {
             userId,
             name,
             message,
-            upvotes,
+            upvotes: [],
         })
     }
 
